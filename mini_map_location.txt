@@ -1,0 +1,4 @@
+minimap_x = 11   # left
+minimap_y = 17    # top
+minimap_width = 500
+minimap_height = 483

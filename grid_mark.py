@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.patches as patches
 
 # Load your image
-img = plt.imread('Ascent_minimap.png')  # Replace with your actual file name
+img = plt.imread('Ascent_minimap2.png')  # Replace with your actual file name
 
 grid_size = 30
 grid = np.ones((grid_size, grid_size), dtype=int)  # Start with all walkable (1)
@@ -56,5 +56,3 @@ fig.canvas.mpl_connect('button_press_event', onclick)
 
 plt.show()
 
-# Save when you're done
-np.savetxt("grid_matrix.txt", grid, fmt='%d')

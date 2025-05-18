@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.patches as patches
 
 # Load image
-img = plt.imread('Ascent_minimap.png')
+img = plt.imread('Ascent_minimap2.png')
 
 grid_size = 30
 grid = np.ones((grid_size, grid_size), dtype=int)  # 1 = walkable, 0 = blocked
