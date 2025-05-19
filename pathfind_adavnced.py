@@ -6,7 +6,7 @@ import pyautogui
 import time
 
 # Load grid
-grid = np.loadtxt("grid_matrix.txt", dtype=int)
+grid = np.loadtxt("matrix_ascent.txt", dtype=int)
 GRID_SIZE = grid.shape[0]
 
 # Screen capture region (adjust based on your screen resolution and minimap position)
@@ -17,7 +17,7 @@ cell_width = region['width'] / GRID_SIZE
 cell_height = region['height'] / GRID_SIZE
 
 # Load template (player dot)
-template = cv2.imread("neon2.png", 0)
+template = cv2.imread("images/neon_dot.png", 0)
 template_h, template_w = template.shape
 
 # Global goal variable
