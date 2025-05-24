@@ -1,12 +1,15 @@
 import matplotlib.pyplot as plt
 import numpy as np
 import matplotlib.patches as patches
+from matplotlib.widgets import TextBox
+
+text_box = TextBox(plt.axes([0.1, 0.95, 0.8, 0.05]), 'Enter file name to save grid (default: grid_matrix.txt): ', initial='grid_matrix.txt')
 
 # Load image
 img = plt.imread('images/Ascent_minimap2.png')
 
-grid_size = 40
-grid = np.ones((grid_size, grid_size), dtype=int)  # 1 = walkable, 0 = blocked
+grid_size = 70
+grid = np.zeros((grid_size, grid_size), dtype=int)  # 1 = walkable, 0 = blocked
 
 fig, ax = plt.subplots()
 ax.imshow(img)
@@ -92,7 +95,16 @@ def toggle_cell(y, x):
 fig.canvas.mpl_connect('button_press_event', on_press)
 fig.canvas.mpl_connect('button_release_event', on_release)
 fig.canvas.mpl_connect('motion_notify_event', on_motion)
-
+# Text box event
+def on_text_submit(text):
+    global grid
+    if text.strip():
+        np.savetxt(text.strip(), grid, fmt='%d')
+        print(f"Grid saved to {text.strip()}")
+    else:
+        np.savetxt("grid_matrix.txt", grid, fmt='%d')
+        print("Grid saved to grid_matrix.txt")
+text_box.on_submit(on_text_submit)
 plt.show()
 
 # Save

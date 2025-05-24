@@ -6,8 +6,8 @@ import matplotlib.animation as animation
 from matplotlib.widgets import Button
 
 # Load your map and grid
-img = plt.imread('Ascent_minimap2.png')
-grid = np.loadtxt("grid_matrix.txt", dtype=int)
+img = plt.imread('images/Ascent_minimap2.png')
+grid = np.loadtxt("matrix_ascent60.txt", dtype=int)
 grid_size = grid.shape[0]
 
 cell_width = img.shape[1] / grid_size

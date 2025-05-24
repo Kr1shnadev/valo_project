@@ -6,7 +6,7 @@ import pyautogui
 import time
 
 # Load grid
-grid = np.loadtxt("matrix_ascent.txt", dtype=int)
+grid = np.loadtxt("matrix_ascent50.txt", dtype=int)
 GRID_SIZE = grid.shape[0]
 
 # Screen capture region (adjust based on your screen resolution and minimap position)
@@ -17,11 +17,11 @@ cell_width = region['width'] / GRID_SIZE
 cell_height = region['height'] / GRID_SIZE
 
 # Load template (player dot)
-template = cv2.imread("images/neon_dot.png", 0)
+template = cv2.imread("images/neon3.png", 0)
 template_h, template_w = template.shape
 
 # Global goal variable
-goal = None
+goal = (34, 28)
 
 # Mouse callback function
 def select_goal(event, x, y, flags, param):
@@ -72,7 +72,7 @@ def move_toward(current, next):
     dy = next[0] - current[0]
     dx = next[1] - current[1]
 
-    move_duration = 1  # Smooth timing
+    move_duration = 0.5 # Smooth timing
     if dy == -1:
         pyautogui.keyDown('w')
         time.sleep(move_duration)
@@ -151,7 +151,7 @@ with mss.mss() as sct:
 
         # Optional: visualize detection
         cv2.rectangle(frame, top_left, (top_left[0]+template_w, top_left[1]+template_h), (0,255,0), 2)
-        cv2.imshow("Minimap Detection", frame)
+        
 
         if cv2.waitKey(1) & 0xFF == ord("q"):
             break
